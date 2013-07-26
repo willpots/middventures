@@ -1,0 +1,1 @@
+SECRET_CONFIG = YAML.load(File.open("secret/keys.yml"))

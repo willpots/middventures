@@ -1,0 +1,17 @@
+<%= render :partial => "shared/news_header" %>
+<div id="login-container">
+  <form action="/login" method="post">
+    <div class="field-container">
+      <h3>Login</h3>
+    </div>
+    <div class="field-container">
+      <input type="text" autocomplete="false" id="email" name="email" value="" placeholder="email">
+    </div>
+    <div class="field-container">
+      <input type="password" autocomplete="false" id="password" name="password" value="" placeholder="password">
+    </div>
+    <div class="field-container">
+      <input type="submit" class="btn submit" value="submit">
+    </div>
+  </form>
+</div>

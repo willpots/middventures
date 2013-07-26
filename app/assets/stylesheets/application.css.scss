@@ -1,0 +1,274 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ */
+
+
+// Fonts
+$helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+
+// Colors
+
+
+
+
+// Styles
+html {
+  margin:0;
+  padding:0;
+  body {
+    margin:0;
+    padding:0;
+    font-family: $helvetica;
+    height:2000px;
+  }
+}
+
+@media (min-width: 900px) {
+  #login-container {
+    width:900px;
+    margin:0 auto;
+    padding:10px;
+    position:relative;
+    text-align: center;
+    text-transform: lowercase;
+    .field-container {
+      h3 {
+        font-weight: 300;
+      }
+      position:relative;
+      margin:10px 20px;
+    }
+  }
+  header {
+    text-transform:lowercase;
+    &.h-main {
+      background:url("/assets/background.jpg") no-repeat;
+      background-size:cover;
+      background-position:50% -200px;
+      color:white;
+      height:500px;
+      box-shadow: 0 0 15px #333 inset;
+      // Add Transparent Layer
+      &:after {
+        content:"";
+        display:block;
+        height:100%;
+        // background:rgba(255,255,255,0.6);
+        // background:hsla(240, 99%, 15%, 0.6);
+      }
+      .h-right {
+        max-width:560px;
+        float:right;
+        font-weight:100;
+
+        .h-content {
+          text-align:right;
+          float:right;
+          line-height:1em;
+          font-size:100px;
+          margin:40px 80px 0 80px;
+          clear:both;
+        }
+        .line {
+          float:right;
+          margin-top:20px;
+          background:rgba(0,0,0,0.4);
+          padding:3px;  
+          clear:right;   
+        }
+        .h-description {
+          margin:20px 80px 0 0;
+          font-size:20px;
+          line-height:1em;
+          text-align:right;
+          float:right;  
+          background:rgba(0,0,0,0.4);
+          padding:3px;
+        }
+      }
+    }
+    nav.h-nav {
+      float:left;
+      margin:40px 0 0 40px;
+      a {
+        color:white;
+        font-weight:100;
+        font-size:30px;
+        background:rgba(0,0,0,0.4);
+        display:inline-block;
+        margin:5px 10px;
+        padding:6px;
+        &:link,
+        &:visited {
+          color:inherit;
+        }
+      }
+    }
+    &.h-news {
+      background:url("/assets/blog.jpg") no-repeat;
+      // background:blue;
+      background-size:cover;
+      background-position:50% -400px;
+      color:white;
+      height:200px;
+      box-shadow: 0 0 15px #333 inset;
+      // Add Transparent Layer
+      &:after {
+        content:"";
+        display:block;
+        height:100%;
+        // background:rgba(255,255,255,0.6);
+        // background:hsla(240, 99%, 15%, 0.6);
+      }
+      .h-right {
+        max-width:500px;
+        float:right;
+        font-weight:100;
+
+        .h-content {
+          text-align:right;
+          float:right;
+          line-height:1em;
+          font-size:30px;
+          margin:40px 80px 0 80px;
+          clear:both;
+        }
+        .line {
+          float:right;
+          margin-top:5px;
+          background:rgba(0,0,0,0.4);
+          padding:3px;
+          clear:right; 
+        }
+        .h-description {
+          margin:20px 80px 0 0;
+          font-size:16px;
+          line-height:1em;
+          text-align:right;
+          float:right;  
+          background:rgba(0,0,0,0.4);
+          padding:3px;
+        }
+      }
+    }
+  }
+  section {
+    &.main {
+      .section-content {
+        width:900px;
+        margin:0 auto;
+        min-height:200px;
+        text-transform:lowercase;
+
+        h2 {
+          font-weight:300;
+          font-size:30px;
+          margin:0;
+          padding:20px;
+        }
+        p {
+          text-transform:none;
+          padding:0 20px;
+        }
+      }
+    }
+    &.blog {
+      article.post {
+        width:900px;
+        padding-bottom:10px;
+        border-bottom:1pt solid #ccc;
+        margin:0 auto 20px auto;
+        text-transform:lowercase;
+        .post-date {
+          float:right;
+          font-weight:300;
+          margin-right:20px;
+        }
+        h3.post-title {
+          font-weight:300;
+          margin:10px 10px 0 10px;
+          a {
+            &:link, &:visited {
+              color:#333;
+            }
+            &:hover {
+              color:inherit;
+            }
+          }
+        }
+        .post-author {
+          font-weight:300;
+          color:#777;
+          margin:0 10px 0 10px;
+        }
+        .post-content {
+          margin:10px;
+          font-size:16px;
+          font-weight:300;
+          p {
+            margin:10px 0;
+            a {
+
+            }
+          }
+        }
+        .post-meta {
+          font-weight:300;
+          margin:0 10px;
+          .social-links {
+            float:right;
+            a.social {
+              padding:0 5px;
+              font-size:25px;
+              color:#333;
+              &:hover {
+                text-decoration:none;
+                color:#666;
+              }
+            }
+          }
+          a.post-meta-tag {
+            display:inline-block;
+            padding:3px;
+            background:#999;
+            color:white;
+            border-radius:2px;
+          }
+        }
+      }
+    }
+    &.compose {
+      h3.compose-header{
+        font-weight: 300;
+        margin: 10px 10px 0 10px;
+      }
+      .compose-form {
+        margin: 10px 10px 0 10px;
+        input[type="text"] {
+          border-radius:2px;
+          &.compose-title {
+            font-size:30px;
+            height:auto;
+            width:800px;
+          }
+        }
+        textarea {
+          width:800px;
+        }
+      }
+      width:900px;
+      margin:0 auto;
+      min-height:200px;
+      text-transform:lowercase;
+    }
+  }
+}

@@ -1,0 +1,53 @@
+<%
+  id = 0
+  id = post.id if !post.nil?
+%>
+<div class="compose-form" ng-controller="FormCtrl">
+  <div>
+    <input type="text" class="compose-title" value="" ng-model="post.title">
+  </div>
+  <div>
+    <textarea id="compose-field" name="compose-content" cols="30" rows="10" text-editor="post.content" class="compose-content"></textarea>
+  </div>
+  <div>
+    <% if !post.nil? %>
+    <div id="save-post" class="btn" ng-click="save()">Save</div>
+    <% else %>
+    <div id="create-post" class="btn" ng-click="create()">Create</div>
+    <% end %>
+    <div id="view-post" class="btn">View</div>
+  </div>
+</div>
+<script>
+function FormCtrl($scope, $http) {
+  var newPost = <%= new_post %>;
+  var endpoints = {
+    fetch: '/posts/<%= id %>.json', 
+    save: '/posts/<%= id %>.json', 
+    create: '/posts.json', 
+    show: function() {
+      return '/posts/' + ($scope.permalink || $scope.id);
+    }
+  };
+  if(!newPost) {
+    $http.get(endpoints.fetch).success(function(data) {
+      $scope.post = data;
+    });
+  }
+
+  $scope.save = function() {
+    $http.put(endpoints.save, $scope.post).success(function(response, code, request) {
+      $scope.post = response;
+    });
+  };
+  $scope.create = function() {
+    $http.post(endpoints.create, $scope.post).success(function(response, code, request) {
+      $scope.post = response;
+      // window.location = endpoints.show();
+    });
+  };
+  $scope.list = function() {
+
+  };
+}
+</script>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" ng-app="mv">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="og:title" content="Midd Ventures" />
+  <meta name="og:type" content="website" />
+  <meta name="og:description" content="Middlebury College's entrepreneurial backbone" />
+  <meta name="og:url" content="">
+
+  <title>Midd Ventures</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="/assets/bootstrap-wysihtml5.css" type="text/css">
+  <link rel="stylesheet" href="/assets/bootstrap-responsive.min.css" type="text/css">
+  <%= stylesheet_link_tag    "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= yield %>
+  <!-- JS -->
+  <script src="/assets/jquery.min.js"></script>
+  <script src="/assets/angular.min.js"></script>
+  <script src="/assets/wysihtml5.min.js"></script>
+  <script src="/assets/bootstrap.min.js"></script>
+  <script src="/assets/bootstrap-wysihtml5.min.js"></script>
+  <script src="/assets/script.js"></script>
+</body>
+</html>

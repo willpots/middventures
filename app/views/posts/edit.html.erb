@@ -1,0 +1,5 @@
+<%= render :partial => "shared/news_header" %>
+<section id="compose" class="compose">
+  <h3 class="compose-header">Update a post</h3>
+  <%= render :partial => "form", :locals => {:post => @post} %>
+</section>

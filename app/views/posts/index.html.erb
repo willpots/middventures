@@ -1,0 +1,8 @@
+<%= render :partial => "shared/news_header" %>
+<section id="blog" class="blog">
+<% @posts.each { |post| %>
+
+  <%= render :partial => "post", :locals => {:post => post} %>
+
+<% } %>
+</section>

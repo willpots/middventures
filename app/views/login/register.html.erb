@@ -1,0 +1,34 @@
+<%= render :partial => "shared/news_header" %>
+<div id="login-container" ng-controller="FormCtrl">
+  <form action="/login" method="post">
+    <div class="field-container">
+      <h3>Create new Author</h3>
+    </div>
+    <div class="field-container">
+      <input type="text" autocomplete="false" id="email" name="email" value="" placeholder="email" ng-model="email" ng-keypress="validate()">
+    </div>
+    <div class="field-container">
+      <input type="password" autocomplete="false" id="password" name="password" value="" placeholder="password" ng-model="password" ng-keypress="validate()">
+    </div>
+    <div class="field-container">
+      <input type="password" autocomplete="false" id="password2" name="password2" value="" placeholder="password" ng-model="password2" ng-keypress="validate()">
+    </div>
+    <div class="field-container">
+      <input type="submit" class="btn submit" value="submit">
+    </div>
+  </form>
+</div>
+<script>
+function LoginCtrl($scope, $http) {
+  $scope.email = "";
+  $scope.password = "";
+  $scope.password2 = "";
+
+  $scope.validate = function() {
+    if($scope.email.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/i)) {
+      
+    }
+  }
+}
+
+</script>

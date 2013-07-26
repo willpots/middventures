@@ -1,0 +1,22 @@
+  <article class="post">
+    <div class="post-date" data-timestamp="<%= post.created_at.to_i %>">
+      <%= post.created_at.strftime('%B %e at %l:%M %p') %>
+    </div>
+    <h3 class="post-title"><a href="<%= posts_path %>/<%= post.permalink || post.id %>"><%= post.title %></a></h3>
+    <div class="post-author">By <a href"<%= author_path(post.author) unless post.author.nil? %>"><%= post.author.name unless post.author.nil? %></a></div>
+    <div class="post-content"><%= raw post.content %></div>
+    <div class="post-meta">
+      <div class="social-links">
+        <% if not post.twitter_url.nil? %>
+        <a href="<%= post.twitter_url %>" class="social"><i class="icon-twitter-sign"></i></a>
+        <% end %>
+        <% if not post.facebook_url.nil? %>
+        <a href="<%= post.facebook_url %>" class="social"><i class="icon-facebook-sign"></i></a>
+        <% end %>
+      </div>
+      <!-- Tags Will Go Here -->
+      <% post.tags.each { |t| %>
+      <a class="post-meta-tag" href="/category/<%= t.id %>"><%= t.name %></a>
+      <% } %>
+    </div>
+  </article>
