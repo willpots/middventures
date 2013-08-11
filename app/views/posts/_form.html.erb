@@ -2,25 +2,33 @@
   id = 0
   id = post.id if !post.nil?
 %>
-<div class="compose-form" ng-controller="FormCtrl">
-  <div>
-    <input type="text" class="compose-title" value="" ng-model="post.title">
+
+<div class="compose-form" ng-controller="PostCtrl">
+  <div class="field-container">
+    <input type="text" class="compose-title form-control" value="" ng-model="post.title">
   </div>
-  <div>
-    <textarea id="compose-field" name="compose-content" cols="30" rows="10" text-editor="post.content" class="compose-content"></textarea>
+  <div class="field-container">
+    <textarea id="compose-field" name="compose-content" cols="30" rows="10" text-editor="post.content" class="compose-content form-control"></textarea>
   </div>
-  <div>
+  <div class="field-container">
+    <div class="share-buttons">
+      <i class="icon-twitter-sign icon-3x" mv-toggle-button="toTwitter"></i>
+      <i class="icon-facebook-sign icon-3x" mv-toggle-button="toFacebook"></i>
+    </div>
     <% if !post.nil? %>
-    <div id="save-post" class="btn" ng-click="save()">Save</div>
+    <div id="save-post" class="btn btn-default" ng-click="save()">Save</div>
     <% else %>
-    <div id="create-post" class="btn" ng-click="create()">Create</div>
+    <div id="create-post" class="btn btn-default" ng-click="create()">Create</div>
     <% end %>
-    <div id="view-post" class="btn">View</div>
+    <div id="view-post" class="btn btn-default">View</div>
   </div>
 </div>
+
 <script>
-function FormCtrl($scope, $http) {
+// Creates a post
+function PostCtrl($scope, $http) {
   var newPost = <%= new_post %>;
+
   var endpoints = {
     fetch: '/posts/<%= id %>.json', 
     save: '/posts/<%= id %>.json', 
@@ -34,18 +42,42 @@ function FormCtrl($scope, $http) {
       $scope.post = data;
     });
   }
+  $scope.toTwitter = true;
 
   $scope.save = function() {
-    $http.put(endpoints.save, $scope.post).success(function(response, code, request) {
+    $http.put({
+      url: endpoints.save, 
+      data: $scope.post,
+      method: "PUT",
+      headers: {
+        "X-CSRF-Token": $("meta[name='csrf-token']").attr("content") 
+      }
+    }).success(function(response, code, request) {
       $scope.post = response;
     });
   };
+
   $scope.create = function() {
-    $http.post(endpoints.create, $scope.post).success(function(response, code, request) {
+    $http({
+      url: endpoints.create, 
+      data: {
+        post: $scope.post,
+        toTwitter: $scope.toTwitter
+      },
+      method: "POST",
+      headers: {
+        "X-CSRF-Token": $("meta[name='csrf-token']").attr("content") 
+      }
+    }).success(function(response, code, request) {
       $scope.post = response;
-      // window.location = endpoints.show();
+      if($scope.post.id) {
+        window.location = endpoints.show();
+      } else {
+        console.log("Couldn't go to post", post)
+      }
     });
   };
+
   $scope.list = function() {
 
   };

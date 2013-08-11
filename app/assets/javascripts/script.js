@@ -1,33 +1,44 @@
 var MV = angular.module('mv', [])
-  .directive("textEditor", function($compile, $parse) {
-  return function($scope, $element, $attrs) {
-    var model = $parse($attrs.textEditor);
+  .directive("textEditor", function($parse) {
+  return function(scope, element, attrs) {
+    var model = $parse(attrs.textEditor);
     // Take care of reading value from TextArea
-    $scope.editor = $($element).wysihtml5({
+    scope.editor = $(element).wysihtml5({
       "events": {
         "load": function(e) {
-          $doc = $($($element).data("wysihtml5").editor.composer.doc);
-          $doc.keydown(function(evt){
-              // console.log("Down "+ evt.which);
-          });
+          $doc = $($(element).data("wysihtml5").editor.composer.doc);
           $doc.keyup(function(evt){
-            model.assign($scope, evt.target.innerHTML);
+            model.assign(scope, evt.target.innerHTML);
           });
         }
       }
     });
 
-    $scope.$watch($attrs.textEditor, function(value) {
-      $scope.editor.data("wysihtml5").editor.setValue(value);
+    scope.$watch(attrs.textEditor, function(value) {
+      scope.editor.data("wysihtml5").editor.setValue(value);
     });
   };
-}).directive("validateEmail", function($parse) {
-  return function($scope, $element, $attrs) {
+}).directive("mvToggleButton", function($parse) {
+  return function(scope, element, attrs) {
+    var model = $parse(attrs.mvToggleButton);
 
+    $(element).click(function(e) {
+      var checked = $(this).hasClass("checked");
+      $(this).toggleClass("checked");
+      model.assign(scope, !checked);
+    });
+
+    scope.$watch(attrs.mvToggleButton, function(value) {
+      if(value === true) {
+        $(element).addClass("checked");
+      } else {
+        $(element).removeClass("checked");
+      }
+    });
   };
 });
 
-function MVController($scope) {
+function MVController(scope) {
 
 }
 
@@ -43,5 +54,4 @@ $(document).ready(function() {
       });
     });
   });
-
 });

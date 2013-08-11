@@ -1,6 +1,6 @@
 <%= render :partial => "shared/news_header" %>
 <div id="login-container">
-  <form action="/login" method="post">
+  <form action="/login<%= '?url='+params[:url] %>" method="post">
     <div class="field-container">
       <h3>Login</h3>
     </div>

@@ -30,8 +30,6 @@ ul.wysihtml5-toolbar a[data-wysihtml5-command=underline] {
 }
 ul.wysihtml5-toolbar a.btn {
   border-radius:2px;
-  background:#efefef;
-  color: #333;
   text-shadow: none;
 }
 ul.wysihtml5-toolbar a.btn.wysihtml5-command-active {
