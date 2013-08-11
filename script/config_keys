@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+require 'yaml'
+config = YAML.load(File.open("secret/keys.yml"))
+
+command = "heroku config:set "
+
+config.each { |k,v|
+  command += k.upcase + "=" + v + " "
+}
+
+exec( command )
