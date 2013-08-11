@@ -9,7 +9,7 @@ class LoginController < ApplicationController
 
   def login
     if not session[:user_id]
-      password_digest = Digest::SHA1.hexdigest(SECRET_CONFIG["password_salt"] + params[:password])
+      password_digest = Digest::SHA1.hexdigest(ENV["password_salt"] + params[:password])
       @author = Author.where(:email => params[:email], :password => password_digest).first
       if @author.nil?
         @message = "Could not find username/password combination"
