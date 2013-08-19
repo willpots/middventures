@@ -3,9 +3,11 @@ require 'yaml'
 config = YAML.load(File.open("secret/keys.yml"))
 
 command = "heroku config:set "
-
+local = ""
 config.each { |k,v|
   command += k.upcase + "=" + v + " "
+  local += "export " + k.upcase + "=" + v + "\n"
 }
 
+File.open(".env", 'w') { |file| file.write(local) }
 exec( command )

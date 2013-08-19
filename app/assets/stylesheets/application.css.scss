@@ -277,6 +277,9 @@ html {
     }
   }
 }
+input {
+  border: 1pt solid #ccc;
+}
 [mv-toggle-button] {
   display: inline-block;
   vertical-align: middle;
@@ -308,6 +311,9 @@ i[mv-toggle-button].checked {
   -webkit-user-select: none;
   -o-user-select: none;
   user-select: none;
+}
+.btn-default {
+
 }
 .sm-links {
   a {
