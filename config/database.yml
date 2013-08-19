@@ -5,6 +5,7 @@
 #   gem 'sqlite3'
 development:
   adapter: postgresql
+  host: localhost
   database: middventures
   username: middventures
   password:
